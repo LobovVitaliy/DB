@@ -13,8 +13,8 @@ class Flights(Collection):
                 updated.plane = plane
         return updated
 
-    def get_planes(self, where):
-        return [x.plane for x in self.list if x.where == where]
+    def get_planes(self, check):
+        return [x.plane for x in self.list if check(x)]
 
     def delete_planes(self, *numbers):
         for x in self.list:
