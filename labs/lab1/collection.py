@@ -12,7 +12,7 @@ class Collection:
     def find(self, number):
         return next((x for x in self.list if x.number == number), None)
 
-    def numbers(self, check):
+    def numbers(self, check=lambda x: True):
         return [x.number for x in self.list if check(x)]
 
     def filter(self, check):
