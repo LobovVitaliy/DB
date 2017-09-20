@@ -85,37 +85,8 @@ def input_and_get_plane():
         return
     pilot = input('Pilot: ')
     seats = input('Seats: ')
-    flight = choose_flight('Add')
 
-    return Airplane(number, pilot, seats, flight)
-
-
-def choose_flight(action):
-    while True:
-        check = ask(action + ' flight?')
-        if not check:
-            return
-
-        numbers = flights.numbers(lambda x: not x.status)
-        if numbers:
-            check = ask('New flight?')
-        else:
-            check = True
-
-        if check:
-            flight = input_and_get_flight()
-            if flight:
-                flights.insert(flight)
-        else:
-            print('Existing flight numbers:', '; '.join(numbers))
-            flight = input_and_find_flight()
-
-        if flight:
-            if flight.status:
-                print('This flight belongs to another plane!')
-            else:
-                flight.status = True
-                return flight.number
+    return Airplane(number, pilot, seats)
 
 
 def add_flight():
@@ -135,20 +106,12 @@ def input_and_get_flight():
         return
     whence = input('Whence: ')
     where = input('Where: ')
-
-    return Flight(number, whence, where)
-
-
-def input_and_find_flight():
-    number = input('Number: ')
-    if not number:
-        print('Invalid input!')
+    plane = input('Plane: ')
+    if not airplanes.exists(plane):
+        print('Plane does not exist!')
         return
-    flight = flights.find(number)
-    if not flight:
-        print('Flight does not exist!')
-    else:
-        return flight
+
+    return Flight(number, whence, where, plane)
 
 
 # Edit
@@ -157,22 +120,14 @@ def edit_plane():
     if not number:
         print('Invalid input!')
         return
-    airplane = airplanes.find(number)
-    if not airplane:
+    if not airplanes.exists(number):
         print('Plane does not exist!')
         return
 
-    old_number = airplane.flight
-
     pilot = input('Pilot (new): ')
     seats = input('Seats (new): ')
-    flight = choose_flight('Edit')
 
-    if flight and old_number:
-        old_flight = flights.find(old_number)
-        old_flight.status = False
-
-    updated = airplanes.update(number, pilot, seats, flight)
+    updated = airplanes.update(number, pilot, seats)
     print('Edited:', updated)
 
 
@@ -186,8 +141,12 @@ def edit_flight():
         return
     whence = input('Whence (new): ')
     where = input('Where  (new): ')
+    plane = input('Plane  (new): ')
+    if not airplanes.exists(plane):
+        print('Plane does not exist!')
+        return
 
-    updated = flights.update(number, whence, where)
+    updated = flights.update(number, whence, where, plane)
     print('Edited:', updated)
 
 
@@ -197,29 +156,21 @@ def delete_plane():
     if not number:
         print('Invalid input!')
         return
-    airplane = airplanes.find(number)
-    if airplane:
-        flight_number = airplane.flight
-        if flight_number:
-            check = ask('Delete flight?')
-            if check:
-                flights.remove(flight_number)
-            else:
-                flight = flights.find(flight_number)
-                flight.status = False
+    if airplanes.exists(number):
+        flights.delete_planes(number)
         airplanes.remove(number)
         print('Successfully deleted!')
     else:
         print('Airplane does not exist!')
 
 
+# - exists
 def delete_flight():
     number = input('Number: ')
     if not number:
         print('Invalid input!')
         return
     if flights.exists(number):
-        airplanes.reset_flight(number)
         flights.remove(number)
         print('Successfully deleted!')
     else:
@@ -230,7 +181,8 @@ def delete_flight():
 def drop_planes():
     check = ask('Are you sure you want to delete the list (Airplanes)?')
     if check:
-        flights.reset_status()
+        numbers = airplanes.numbers()
+        flights.delete_planes(*numbers)
         airplanes.drop()
         print('Successfully deleted!')
 
@@ -238,7 +190,6 @@ def drop_planes():
 def drop_flights():
     check = ask('Are you sure you want to delete the list (Flights)?')
     if check:
-        airplanes.reset_flight()
         flights.drop()
         print('Successfully deleted!')
 
@@ -250,8 +201,8 @@ def search_planes():
         print('Invalid input!')
         return
 
-    numbers = flights.numbers(lambda x: x.where == where)
-    filtered = airplanes.filter(lambda x: x.flight in numbers)
+    numbers = flights.get_planes(where)
+    filtered = airplanes.filter(lambda x: x.number in numbers)
     print('Filtered by country:', where)
     print('\n'.join(str(x) for x in filtered))
 
