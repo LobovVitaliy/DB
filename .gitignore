@@ -1,4 +1,5 @@
 /examples
+screenshots/
 .idea/
 __pycache__/
 *.py[cod]
