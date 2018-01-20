@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "pilot": "Alvin",
+    "seats": 200,
+    "cargo": false
+  },
+  {
+    "id": 2,
+    "pilot": "Bowen",
+    "seats": 180,
+    "cargo": false
+  },
+  {
+    "id": 3,
+    "pilot": "Colin",
+    "seats": 230,
+    "cargo": false
+  },
+  {
+    "id": 4,
+    "pilot": "Harry",
+    "seats": 210,
+    "cargo": false
+  },
+  {
+    "id": 5,
+    "pilot": "Jack",
+    "seats": 200,
+    "cargo": false
+  },
+  {
+    "id": 6,
+    "pilot": "Scott",
+    "seats": 150,
+    "cargo": false
+  },
+  {
+    "id": 7,
+    "pilot": "Victor",
+    "seats": 190,
+    "cargo": false
+  },
+  {
+    "id": 8,
+    "pilot": "Ron",
+    "seats": 250,
+    "cargo": false
+  },
+  {
+    "id": 9,
+    "pilot": "Norman",
+    "seats": 225,
+    "cargo": false
+  },
+  {
+    "id": 10,
+    "pilot": "John",
+    "seats": 165,
+    "cargo": false
+  }
+]

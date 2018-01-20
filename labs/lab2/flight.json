@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "id_from_airport": 1,
+    "id_to_airport": 2,
+    "id_plane": 10,
+    "date": "2017-12-28",
+    "status": true
+  },
+  {
+    "id": 2,
+    "id_from_airport": 5,
+    "id_to_airport": 3,
+    "id_plane": 6,
+    "date": "2017-10-17",
+    "status": false
+  },
+  {
+    "id": 3,
+    "id_from_airport": 2,
+    "id_to_airport": 4,
+    "id_plane": 3,
+    "date": "2017-12-12",
+    "status": true
+  },
+  {
+    "id": 4,
+    "id_from_airport": 2,
+    "id_to_airport": 5,
+    "id_plane": 2,
+    "date": "2017-09-05",
+    "status": false
+  },
+  {
+    "id": 5,
+    "id_from_airport": 4,
+    "id_to_airport": 1,
+    "id_plane": 4,
+    "date": "2017-11-15",
+    "status": false
+  },
+  {
+    "id": 6,
+    "id_from_airport": 5,
+    "id_to_airport": 4,
+    "id_plane": 7,
+    "date": "2017-12-02",
+    "status": true
+  }
+]

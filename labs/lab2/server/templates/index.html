@@ -1,0 +1,26 @@
+<!doctype html>
+
+{% load staticfiles %}
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'build/styles.css' %}">
+
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <title>Lab2</title>
+</head>
+
+<body>
+    <div id="root">Загрузка...</div>
+
+    <script type="text/javascript" src="{% static 'build/bundle.js' %}"></script>
+</body>
+
+</html>

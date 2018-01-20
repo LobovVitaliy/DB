@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "city": "Kyiv",
+    "name": "Boryspil"
+  },
+  {
+    "id": 2,
+    "city": "Lviv",
+    "name": "Lviv Danylo Halytskyi International Airport"
+  },
+  {
+    "id": 3,
+    "city": "Paris",
+    "name": "Paris Charles de Gaulle Airport"
+  },
+  {
+    "id": 4,
+    "city": "New York",
+    "name": "John F. Kennedy International Airport"
+  },
+  {
+    "id": 5,
+    "city": "Moscow",
+    "name": "Domodedovo International Airport"
+  }
+]
